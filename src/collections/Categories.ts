@@ -2,6 +2,9 @@ import { CollectionConfig } from "payload";
 
 const Categories: CollectionConfig = {
   slug: "categories",
+  access: {
+    create: () => true,
+  },
   fields: [
     {
       name: "name",
@@ -11,5 +14,5 @@ const Categories: CollectionConfig = {
   ],
 };
 
-export { Categories }
-export default Categories
+export { Categories };
+export default Categories;
