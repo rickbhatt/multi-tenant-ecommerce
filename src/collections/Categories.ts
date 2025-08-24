@@ -17,6 +17,21 @@ export const Categories: CollectionConfig = {
       required: true,
       unique: true,
       index: true,
+      hooks: {
+        beforeChange: [
+          ({ value, data }) => {
+            // Auto-generate slug if empty
+            if (!data) return null;
+            if (!value && data.name) {
+              return data.name
+                .toLowerCase()
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/(^-|-$)/g, "");
+            }
+            return value;
+          },
+        ],
+      },
     },
     {
       name: "color",
